@@ -8,91 +8,104 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Merriweather&display=swap" rel="stylesheet">
 
 <style>
-  /* GENERAL STYLES */
-  body, html {
-    margin:0;
-    padding:0;
-    height:100%;
-    overflow-x:hidden;
-    font-family: 'Merriweather', serif;
-    background: #0a2e20;
-    color: #FFD700;
-  }
-  .page {
-    display:none;
-    height:100vh;
-    width:100%;
-    text-align:center;
-    padding-top:80px;
-    position:relative;
-  }
-  .active {
-    display:block;
-  }
-  h1.title {
-    font-family: 'Cinzel', serif;
-    font-size:50px;
-    color:#FFD700;
-    text-shadow:0 0 20px #FFD700;
-  }
-  p {
-    font-size:20px;
-    max-width:800px;
-    margin:20px auto;
-  }
-  button {
-    padding:12px 25px;
-    margin:10px;
-    font-size:18px;
-    border:none;
-    border-radius:25px;
-    cursor:pointer;
-    background:#FFD700;
-    color:#0a2e20;
-    font-weight:bold;
-    box-shadow:0 0 10px #FFD700;
-  }
-  input[type=text]{
-    padding:10px;
-    font-size:16px;
-    border-radius:5px;
-    border:none;
-    margin-top:10px;
-    text-align:center;
-  }
+/* GENERAL STYLES */
+body, html {
+  margin:0;
+  padding:0;
+  height:100%;
+  overflow-x:hidden;
+  font-family: 'Merriweather', serif;
+  background: linear-gradient(180deg, #0a2e20 0%, #003300 100%);
+  color:#FFD700;
+  position:relative;
+}
 
-  /* SLIDESHOW */
-  .slideshow {
-    width:300px;
-    height:300px;
-    margin:20px auto;
-    overflow:hidden;
-    border-radius:15px;
-    box-shadow:0 0 20px #FFD700;
-  }
-  .slideshow img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:none;
-  }
-  .slideshow img.active-slide {
-    display:block;
-  }
+/* stars overlay */
+body::after {
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background: transparent url('https://i.ibb.co/0j0cLxT/stars.png') repeat top center;
+  pointer-events:none;
+}
 
-  /* FIREWORKS PARTICLES */
-  .firework {
-    position: absolute;
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    background: #FFD700;
-    animation: fall linear infinite;
-  }
-  @keyframes fall {
-    0% {transform: translateY(0);}
-    100% {transform: translateY(100vh);}
-  }
+/* PAGE STYLES */
+.page {
+  display:none;
+  height:100vh;
+  width:100%;
+  text-align:center;
+  padding-top:80px;
+  position:relative;
+}
+.active { display:block; }
+
+h1.title {
+  font-family: 'Cinzel', serif;
+  font-size:50px;
+  color:#FFD700;
+  text-shadow:0 0 20px #FFD700;
+}
+
+p {
+  font-size:20px;
+  max-width:800px;
+  margin:20px auto;
+}
+
+button {
+  padding:12px 25px;
+  margin:10px;
+  font-size:18px;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  background:#FFD700;
+  color:#0a2e20;
+  font-weight:bold;
+  box-shadow:0 0 10px #FFD700;
+}
+
+input[type=text]{
+  padding:10px;
+  font-size:16px;
+  border-radius:5px;
+  border:none;
+  margin-top:10px;
+  text-align:center;
+}
+
+/* SLIDESHOW */
+.slideshow {
+  width:300px;
+  height:300px;
+  margin:20px auto;
+  overflow:hidden;
+  border-radius:15px;
+  box-shadow:0 0 20px #FFD700;
+}
+.slideshow img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:none;
+}
+.slideshow img.active-slide { display:block; }
+
+/* FIREWORKS PARTICLES */
+.firework {
+  position: absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background: #FFD700;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(100vh);}
+}
 
 </style>
 </head>
@@ -165,17 +178,17 @@ Happy Birthday once again, Zu. 🎂
 
 <!-- FIREWORKS PARTICLES -->
 <script>
-  for(let i=0;i<50;i++){
-    let fw=document.createElement('div');
-    fw.className='firework';
-    fw.style.left=Math.random()*100+'vw';
-    fw.style.top=Math.random()*-50+'vh';
-    fw.style.width=Math.random()*5+3+'px';
-    fw.style.height=Math.random()*5+3+'px';
-    fw.style.background='hsl('+Math.random()*60+'deg,100%,50%)';
-    fw.style.animationDuration=(2+Math.random()*3)+'s';
-    document.body.appendChild(fw);
-  }
+for(let i=0;i<50;i++){
+  let fw=document.createElement('div');
+  fw.className='firework';
+  fw.style.left=Math.random()*100+'vw';
+  fw.style.top=Math.random()*-50+'vh';
+  fw.style.width=Math.random()*5+3+'px';
+  fw.style.height=Math.random()*5+3+'px';
+  fw.style.background='hsl('+Math.random()*60+'deg,100%,50%)';
+  fw.style.animationDuration=(2+Math.random()*3)+'s';
+  document.body.appendChild(fw);
+}
 </script>
 
 <!-- PAGE NAVIGATION & SLIDESHOW -->
