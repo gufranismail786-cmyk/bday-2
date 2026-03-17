@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A Surprise For The Birthday Girl</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Merriweather&display=swap" rel="stylesheet">
+
+<style>
+  /* GENERAL STYLES */
+  body, html {
+    margin:0;
+    padding:0;
+    height:100%;
+    overflow-x:hidden;
+    font-family: 'Merriweather', serif;
+    background: #0a2e20;
+    color: #FFD700;
+  }
+  .page {
+    display:none;
+    height:100vh;
+    width:100%;
+    text-align:center;
+    padding-top:80px;
+    position:relative;
+  }
+  .active {
+    display:block;
+  }
+  h1.title {
+    font-family: 'Cinzel', serif;
+    font-size:50px;
+    color:#FFD700;
+    text-shadow:0 0 20px #FFD700;
+  }
+  p {
+    font-size:20px;
+    max-width:800px;
+    margin:20px auto;
+  }
+  button {
+    padding:12px 25px;
+    margin:10px;
+    font-size:18px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    background:#FFD700;
+    color:#0a2e20;
+    font-weight:bold;
+    box-shadow:0 0 10px #FFD700;
+  }
+  input[type=text]{
+    padding:10px;
+    font-size:16px;
+    border-radius:5px;
+    border:none;
+    margin-top:10px;
+    text-align:center;
+  }
+
+  /* SLIDESHOW */
+  .slideshow {
+    width:300px;
+    height:300px;
+    margin:20px auto;
+    overflow:hidden;
+    border-radius:15px;
+    box-shadow:0 0 20px #FFD700;
+  }
+  .slideshow img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:none;
+  }
+  .slideshow img.active-slide {
+    display:block;
+  }
+
+  /* FIREWORKS PARTICLES */
+  .firework {
+    position: absolute;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background: #FFD700;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(100vh);}
+  }
+
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+  <h1 class="title">A Surprise For The Birthday Girl</h1>
+  <button onclick="nextPage(1)">Start</button>
+</div>
+
+<!-- PAGE 2 - QUESTIONS -->
+<div id="page2" class="page">
+  <div id="q1">
+    <p>What is your name?</p>
+    <button onclick="nextQuestion(1)">Mahi Tammanna</button>
+    <button onclick="nextQuestion(1)">Zoya</button>
+  </div>
+  <div id="q2" style="display:none;">
+    <p>Your age?</p>
+    <button onclick="nextQuestion(2)">17</button>
+    <button onclick="nextQuestion(2)">18</button>
+  </div>
+  <div id="q3" style="display:none;">
+    <p>Fav color?</p>
+    <input type="text" id="favColor" placeholder="Type here">
+    <br>
+    <button onclick="nextPage(2)">Submit</button>
+  </div>
+</div>
+
+<!-- PAGE 3 - PHOTO SLIDESHOW -->
+<div id="page3" class="page">
+  <h2>Photos</h2>
+  <div class="slideshow" id="slideshow1">
+    <img src="https://picsum.photos/300?1" class="active-slide">
+    <img src="https://picsum.photos/300?2">
+    <img src="https://picsum.photos/300?3">
+  </div>
+  <button onclick="nextPage(3)">Next</button>
+</div>
+
+<!-- PAGE 4 - BIRTHDAY NOTE -->
+<div id="page4" class="page">
+  <p>
+Happy Birthday, Zoya! 🎂✨<br><br>
+Having you as my best friend is something I truly value. From the little conversations to the memories we’ve made, every moment of our friendship means a lot to me. You are kind, strong, and someone who always brings a special light.💝<br><br>
+I hope this birthday brings you happiness, peace, and many beautiful moments.🤲 May all your dreams slowly turn into reality and may your smile always stay the same.<br><br>
+No matter where life takes us, our friendship will always be special to me.🌺👍<br><br>
+Happy Birthday once again, Zu. 🎂
+  </p>
+  <button onclick="nextPage(4)">Next</button>
+</div>
+
+<!-- PAGE 5 - PHOTO SLIDESHOW AGAIN -->
+<div id="page5" class="page">
+  <h2>Photos Again</h2>
+  <div class="slideshow" id="slideshow2">
+    <img src="https://picsum.photos/300?1" class="active-slide">
+    <img src="https://picsum.photos/300?2">
+    <img src="https://picsum.photos/300?3">
+  </div>
+  <button onclick="nextPage(5)">Next</button>
+</div>
+
+<!-- PAGE 6 - FROM SHAD -->
+<div id="page6" class="page">
+  <h1 class="title">From SHAD</h1>
+</div>
+
+<!-- FIREWORKS PARTICLES -->
+<script>
+  for(let i=0;i<50;i++){
+    let fw=document.createElement('div');
+    fw.className='firework';
+    fw.style.left=Math.random()*100+'vw';
+    fw.style.top=Math.random()*-50+'vh';
+    fw.style.width=Math.random()*5+3+'px';
+    fw.style.height=Math.random()*5+3+'px';
+    fw.style.background='hsl('+Math.random()*60+'deg,100%,50%)';
+    fw.style.animationDuration=(2+Math.random()*3)+'s';
+    document.body.appendChild(fw);
+  }
+</script>
+
+<!-- PAGE NAVIGATION & SLIDESHOW -->
+<script>
+let currentPage=1;
+
+function nextPage(page){
+  document.getElementById('page'+page).classList.remove('active');
+  document.getElementById('page'+(page+1)).classList.add('active');
+  startSlideshow(page+1);
+}
+
+function nextQuestion(q){
+  document.getElementById('q'+q).style.display='none';
+  document.getElementById('q'+(q+1)).style.display='block';
+}
+
+/* SLIDESHOWS */
+function startSlideshow(pageNum){
+  let slideshowId = pageNum===3?'slideshow1':'slideshow2';
+  let slides=document.querySelectorAll('#'+slideshowId+' img');
+  let index=0;
+  setInterval(()=>{
+    slides[index].classList.remove('active-slide');
+    index=(index+1)%slides.length;
+    slides[index].classList.add('active-slide');
+  },4000);
+}
+
+</script>
+
+</body>
+</html>
