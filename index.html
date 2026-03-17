@@ -36,54 +36,55 @@ body::after {
   height:100vh;
   width:100%;
   text-align:center;
-  padding-top:80px;
+  padding-top:100px;
   position:relative;
 }
 .active { display:block; }
 
 h1.title {
   font-family: 'Cinzel', serif;
-  font-size:50px;
+  font-size:80px;
   color:#FFD700;
-  text-shadow:0 0 20px #FFD700;
+  text-shadow:0 0 25px #FFD700;
 }
 
 p {
-  font-size:20px;
-  max-width:800px;
-  margin:20px auto;
+  font-size:28px;
+  max-width:900px;
+  margin:30px auto;
+  line-height:1.6;
 }
 
 button {
-  padding:12px 25px;
-  margin:10px;
-  font-size:18px;
+  padding:18px 35px;
+  margin:15px;
+  font-size:24px;
   border:none;
   border-radius:25px;
   cursor:pointer;
   background:#FFD700;
   color:#0a2e20;
   font-weight:bold;
-  box-shadow:0 0 10px #FFD700;
+  box-shadow:0 0 15px #FFD700;
 }
 
 input[type=text]{
-  padding:10px;
-  font-size:16px;
+  padding:15px;
+  font-size:22px;
   border-radius:5px;
   border:none;
-  margin-top:10px;
+  margin-top:15px;
   text-align:center;
 }
 
 /* SLIDESHOW */
 .slideshow {
-  width:300px;
-  height:300px;
-  margin:20px auto;
+  width:400px;
+  height:400px;
+  margin:30px auto;
   overflow:hidden;
-  border-radius:15px;
-  box-shadow:0 0 20px #FFD700;
+  border-radius:20px;
+  box-shadow:0 0 25px #FFD700;
 }
 .slideshow img {
   width:100%;
@@ -96,8 +97,8 @@ input[type=text]{
 /* FIREWORKS PARTICLES */
 .firework {
   position: absolute;
-  width:6px;
-  height:6px;
+  width:8px;
+  height:8px;
   border-radius:50%;
   background: #FFD700;
   animation: fall linear infinite;
@@ -139,18 +140,18 @@ input[type=text]{
 
 <!-- PAGE 3 - PHOTO SLIDESHOW -->
 <div id="page3" class="page">
-  <h2>Photos</h2>
+  <h2 style="font-size:36px;">Photos</h2>
   <div class="slideshow" id="slideshow1">
-    <img src="https://picsum.photos/300?1" class="active-slide">
-    <img src="https://picsum.photos/300?2">
-    <img src="https://picsum.photos/300?3">
+    <img src="https://picsum.photos/400?1" class="active-slide">
+    <img src="https://picsum.photos/400?2">
+    <img src="https://picsum.photos/400?3">
   </div>
   <button onclick="nextPage(3)">Next</button>
 </div>
 
 <!-- PAGE 4 - BIRTHDAY NOTE -->
 <div id="page4" class="page">
-  <p>
+  <p style="font-size:28px; max-width:900px;">
 Happy Birthday, Zoya! 🎂✨<br><br>
 Having you as my best friend is something I truly value. From the little conversations to the memories we’ve made, every moment of our friendship means a lot to me. You are kind, strong, and someone who always brings a special light.💝<br><br>
 I hope this birthday brings you happiness, peace, and many beautiful moments.🤲 May all your dreams slowly turn into reality and may your smile always stay the same.<br><br>
@@ -162,18 +163,18 @@ Happy Birthday once again, Zu. 🎂
 
 <!-- PAGE 5 - PHOTO SLIDESHOW AGAIN -->
 <div id="page5" class="page">
-  <h2>Photos Again</h2>
+  <h2 style="font-size:36px;">Photos Again</h2>
   <div class="slideshow" id="slideshow2">
-    <img src="https://picsum.photos/300?1" class="active-slide">
-    <img src="https://picsum.photos/300?2">
-    <img src="https://picsum.photos/300?3">
+    <img src="https://picsum.photos/400?1" class="active-slide">
+    <img src="https://picsum.photos/400?2">
+    <img src="https://picsum.photos/400?3">
   </div>
   <button onclick="nextPage(5)">Next</button>
 </div>
 
 <!-- PAGE 6 - FROM SHAD -->
 <div id="page6" class="page">
-  <h1 class="title">From SHAD</h1>
+  <h1 class="title" style="font-size:70px;">From SHAD</h1>
 </div>
 
 <!-- FIREWORKS PARTICLES -->
@@ -183,8 +184,8 @@ for(let i=0;i<50;i++){
   fw.className='firework';
   fw.style.left=Math.random()*100+'vw';
   fw.style.top=Math.random()*-50+'vh';
-  fw.style.width=Math.random()*5+3+'px';
-  fw.style.height=Math.random()*5+3+'px';
+  fw.style.width=Math.random()*6+4+'px';
+  fw.style.height=Math.random()*6+4+'px';
   fw.style.background='hsl('+Math.random()*60+'deg,100%,50%)';
   fw.style.animationDuration=(2+Math.random()*3)+'s';
   document.body.appendChild(fw);
@@ -217,7 +218,6 @@ function startSlideshow(pageNum){
     slides[index].classList.add('active-slide');
   },4000);
 }
-
 </script>
 
 </body>
